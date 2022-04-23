@@ -1,0 +1,63 @@
+---
+title: "Funciones"
+author: "saul"
+date: '2022-04-23'
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Variables y Funciones
+
+------------------------ 
+Escribir funciones matemáticas en R es bastante sencillo, pero las funciones en R se parecen bastante a las 
+funciones en programación. 
+
+- nombre_variable = valor *define una varible con dicho valor*
+- nombre_funcion = function(variable){función} *define una función*
+
+```{r}
+miVariable = 4
+doble = function(x){2*x}
+doble(miVariable)
+```
+```{r}
+cudrado = function(x){x^2}
+cudrado(miVariable)
+``` 
+\ 
+**Ejemplos: ** 
+\ 
+
+- Vamos a operar con funciones: 
+$f(x)=x^3-3^x*sen(x)$ 
+```{r}
+f = function(x){x^3-(3^x)*sin(x)}
+f(4)
+```
+- También podemos asignar funciones a variables con dos o más parametros: $g(x) = \frac{sen(\frac{1}{x})}{\sqrt(x+1)}$
+```{r}
+producto <- function(x,y){
+  print(paste(sprintf("%i * %i = ",x,y),x*y))
+}
+producto(2,3)
+g <- function(x){
+  (sin(1/x)/sqrt(x+1))
+}
+g(pi)
+```
+
+- Funciones como en lenguajes de programación: 
+```{r}
+factorial <- function(x){
+  if (x!= 0 && x!= 1){
+    return(factorial(x-1)*x)
+  }
+  return(1)
+}
+factorial(6)
+```

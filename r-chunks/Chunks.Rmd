@@ -1,0 +1,102 @@
+---
+title: "Chunks en R-studio"
+author: "saul"
+date: '2022-04-25'
+output:
+  pdf_document: default
+  html_document: default
+---
+
+## Chunks
+Los chunks son espacios de código que se pueden ejecutar con Rmarkdown y los podremos nombrar como: 
+```{r soyUnaEtiqueta}
+print(x = 1)
+```
+Código| Significado
+------|------------
+*echo*| Por defecto es *TRUE* y nos dice si se muestra el código fuente de chunk
+*eval*|Por defecto es *TRUE* y nos dice que si evalua o no el chunk
+*message*| Por defecto es *TRUE* y nos dice que si queremos que se muestren los mensajes que R produce al ejecutar el código
+*warning*| Por defecto es *TRUE* y nos perimite indicar si se muestran los mensajes de advertencia que producen algunas funciones de R 
+*comment*| Si lo ponemos *NA* hara que no aparezcan los *#* en los resultados 
+**Ejemplos: **\ 
+
+```{r ejemplo1, echo=FALSE}
+print(x = 2)
+``` 
+```{r ejemplo2, eval=FALSE}
+suma <- function(x,y){
+  x+y
+}
+suma(2,3)
+
+```
+```{r ejemplo3, message=FALSE, comment= NA}
+library(magic)
+magic(6)
+```
+```{r ejemplo4, warning=FALSE}
+
+```
+Ahora un parámetro algo peculiar es *result* este tiene varias opciones que nos dice que queremos ver al ejecutar el código\ 
+
+Significado|Código  | Resultado|
+-----------|--------|----------|
+result     | hide   |Nos muestra el resultado en pantalla o no
+result     | asis   |Nos devuelve el resultado línea a línea de manera literal en el documento y lo formate adecuadamente 
+result     | hold   |Muetra TOOS los resultados al final del bloque de código
+result     | markup |Muestra los resultados linea por linea\ 
+**Ejemplos: **
+
+```{r ejem2.1,results='hide'}
+magic(5)
+```
+```{r ejem2.2,results='asis'}
+vector <- c(2,3,5,6,7)
+for (a in vector) {
+  print(a)
+}
+```
+```{r ejem2.3, results='hold'}
+a<-2
+b<-3
+a+b
+
+c <- c(2,3,4,5)
+suma = 0 
+for(a in c){
+  suma = suma+ a 
+}
+suma
+```
+```{r ejem2.4,results='markup'}
+a<-2
+b<-3
+a+b
+
+suma = function(x,y){x+y}
+suma(2,5)
+```
+
+También podemos ejecutar código de `R` en un línea:\ 
+$\sqrt(2)=$ `r sqrt(2)`\ 
+Esto es algo útil si queremos hacer declarar variables o vectores y operar con ellos para después ponerlas en el documento\ 
+**Ejemplo: **\ 
+```{r ejem3.1,results='hide', echo=FALSE}
+calificacion <- c(6,7,10,6,8)
+promedio = mean(calificacion)
+num = length(calificacion)
+```
+Este año he hecho $n =$ `r num` exámenes, con un promedio de $\overline{n}=$ `r round(promedio,2)` 
+
+
+
+
+
+
+        
+
+
+### Parámetros de los chunks 
+
+-El primer 

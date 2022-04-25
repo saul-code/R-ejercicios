@@ -61,3 +61,6 @@ factorial <- function(x){
 }
 factorial(6)
 ```
+
+
+
